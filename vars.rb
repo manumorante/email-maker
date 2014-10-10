@@ -12,5 +12,6 @@ module Vars
 
 	# DEFAULT FONT FAMLILY
 	DEFAULT_FONT_FAMILY = "Arial"
+	DEFAULT_FONT_SIZE = "16px"
 
 end
