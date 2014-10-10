@@ -31,7 +31,8 @@ module ApplicationHelper
   
   def bp_mail_image options
     # src = !(options[:src] =~ /\//).blank? ? "#{Vars::APP_URL}/#{options[:src]}" : "#{Vars::APP_URL}/emails-layouts/#{options[:src]}"
-    src = "#{Vars::APP_URL}/#{options[:src]}"
+    # src = "#{Vars::APP_URL}/#{options[:src]}"
+    src = "#{options[:src]}"
     alt = options[:alt].blank? ? '' : options[:alt]
     width = options[:width].blank? ? '' : options[:width]
     height = options[:height].blank? ? '' : options[:height]
