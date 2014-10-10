@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   # Titular (en imagen de texto)
-  def bp_mail_title src, alt
+  def title src, alt
     html = <<-HTML
       <table cellpadding="0" cellspacing="0" border="0">
           <tr>
@@ -29,7 +29,7 @@ module ApplicationHelper
     html.html_safe
   end
   
-  def bp_mail_image options
+  def image options
     # src = !(options[:src] =~ /\//).blank? ? "#{Vars::APP_URL}/#{options[:src]}" : "#{Vars::APP_URL}/emails-layouts/#{options[:src]}"
     # src = "#{Vars::APP_URL}/#{options[:src]}"
     src = "#{options[:src]}"
@@ -40,19 +40,19 @@ module ApplicationHelper
     image_tag(src, {:width=>width, :height=>height, :style => "display:block; border:none;", :alt => "#{alt}", :title => "#{alt}"} )
   end
 
-  def bp_mail_multicountry_image options
+  def multicountry_image options
     src = "#{Vars::APP_URL}/emails-layouts/#{I18n.locale.to_s}/#{options[:src]}"
     alt = options[:alt].blank? ? '' : options[:alt]
 
     image_tag(src, {:style => "display:block; border:none;", :alt => "#{alt}", :title => "#{alt}"})
   end
 
-  def bp_mail_footer layout = "default"
+  def footer layout = "default"
     html = render :partial => "layouts/mailings/#{layout}_footer"
     html.html_safe
   end
 
-  def bp_mail_table options="", &block
+  def table options="", &block
     if block_given?
       content = capture(&block)
     else
@@ -72,25 +72,26 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def bp_mail_p text, size
+  def p options
     html = <<-HTML
-    <p style="font-family:#{default_font};font-size:#{default_font_size}">#{capture(&block).html_safe}</p>
+    <p style="font-family:#{Vars::DEFAULT_FONT_FAMILY};font-size:#{Vars::DEFAULT_FONT_SIZE}">#{options[:t]}</p>
     HTML
 
-    html.html_safe
+    #html.html_safe
+    escape_html html
   end
 
-  def bp_mail_spacer options
+  def spacer options
     size = options[:size].blank? ? '20' : options[:size]
-    bp_mail_image :src => "spacer-#{size}.png"
+    image :src => "spacer-#{size}.png"
   end
 
-  def bp_mail_spacer_table options
+  def spacer_table options
     size = options[:size].blank? ? '' : options[:size]
     width = options[:width].blank? ? '100%' : options[:width]
 
-    bp_mail_table :width=>width do
-      bp_mail_spacer :size=>size
+    table :width=>width do
+      spacer :size=>size
     end
   end
 
