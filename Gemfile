@@ -3,3 +3,5 @@
 source 'http://rubygems.org'
 
 gem "middleman", "~>3.0.12"
+# Middleman Github Pages
+gem "middleman-gh-pages"
