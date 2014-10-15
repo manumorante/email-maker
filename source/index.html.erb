@@ -3,8 +3,10 @@ layout: web
 ---
 
 <h1>Email Maker</h1>
-
-<h3>Environment: <%= environment %></h3>
+<%
+   build_test = build? ? 'build' : 'no build'
+%>
+<h3>Environment: <%= environment %> - <%= build_test %></h3>
 
 <div class="panel panel-default">
 	<!-- Default panel contents -->
