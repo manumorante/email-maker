@@ -8,7 +8,8 @@ module ApplicationHelper
       error 'You need specify the "width" and "height" to the images.'
 
     else
-      src = "/emails/#{current_page.data.folder}/images/#{opts[:src]}"
+      host = build? ? '' : current_page.data.host
+      src = "#{host}/emails/#{current_page.data.folder}/images/#{opts[:src]}"
       w = opts[:width]
       h = opts[:height]
       alt = opts[:alt]
