@@ -27,8 +27,8 @@ module ApplicationHelper
 
   # FONT
   def font(opts = {})
-    family = opts[:family].blank? ? Vars::DEFAULT_FONT_FAMILY : opts[:family]
-    size = opts[:size].blank? ? Vars::DEFAULT_FONT_SIZE : opts[:size]
+    family = opts[:family].blank? ? current_page.data.font_family : opts[:family]
+    size = opts[:size].blank? ? current_page.data.font_size : opts[:size]
 
     "style='font-family:#{family};font-size:#{size}'"
   end
