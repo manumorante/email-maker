@@ -3,41 +3,43 @@
 module ApplicationHelper
 
   # IMAGE
-  def image(options = {})
-    # src = !(options[:src] =~ /\//).blank? ? "#{Vars::APP_URL}/#{options[:src]}" : "#{Vars::APP_URL}/emails-layouts/#{options[:src]}"
-    # src = "#{Vars::APP_URL}/#{options[:src]}"
-    src     = "#{options[:src]}"
-    alt     = options[:alt].blank? ? '' : options[:alt]
-    width   = options[:width].blank? ? '' : options[:width]
-    height  = options[:height].blank? ? '' : options[:height]
+  def image(opts = {})
+    if opts[:width].blank? || opts[:height].blank?
+      error 'You need specify the "width" and "height" to the images.'
 
-    image_tag(src, {
-      :width  => width,
-      :height => height,
-      :style  => 'display:block; border:none;',
-      :alt    => "#{alt}",
-      :title  => "#{alt}"}
-    )
+    else
+      src = "/emails/#{current_page.data.folder}/images/#{opts[:src]}"
+      w = opts[:width]
+      h = opts[:height]
+      alt = opts[:alt]
+
+      "<div style='width:#{w};height:#{h}'><img src='#{src}' width='#{w}' height='#{h}' alt='#{alt}' title='#{alt}' style='display:block;border:none;'></div>"
+    end
   end
 
   # TABLE
-  def table(options = {})
-    width = options[:width].blank? ? 'auto' : options[:width]
+  def table(opts = {})
+    width = opts[:width].blank? ? 'auto' : opts[:width]
     "cellpadding='0' cellspacing='0' border='0' width='#{width}' style='width:#{width}'"
   end
 
   # FONT
-  def font(options = {})
-    family = options[:family].blank? ? Vars::DEFAULT_FONT_FAMILY : options[:family]
-    size = options[:size].blank? ? Vars::DEFAULT_FONT_SIZE : options[:size]
+  def font(opts = {})
+    family = opts[:family].blank? ? Vars::DEFAULT_FONT_FAMILY : opts[:family]
+    size = opts[:size].blank? ? Vars::DEFAULT_FONT_SIZE : opts[:size]
 
     "style='font-family:#{family};font-size:#{size}'"
   end
 
   # SPACER
-  def spacer(options = {})
-    size = options[:size].blank? ? '20' : options[:size]
+  def spacer(opts = {})
+    size = opts[:size].blank? ? '20' : opts[:size]
     image :src => "spacer-#{size}.png"
+  end
+
+  # Error
+  def error msg
+    "<p style='color: red'>#{msg}</p>"
   end
 
 end
