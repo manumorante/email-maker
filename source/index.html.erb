@@ -3,27 +3,11 @@ layout: web
 ---
 
 <h1>Email Maker</h1>
-<%
-   build_test = build? ? 'build' : 'no build'
-%>
-<h3>Environment: <%= environment %> - <%= build_test %></h3>
+<h5><code>Environment: <%= environment %></code></h5>
 
-<div class="panel panel-default">
-	<!-- Default panel contents -->
-	<div class="panel-heading">Emails list</div>
-		<div class="panel-body">
-			<p>Text goes here...</p>
-		</div>
+<p><a href="https://github.com/manumorante/email-maker/blob/master/README.md">Readme</a></p>
 
-		<!-- Table -->
-		<table class="table">
-			<tbody>
-				<tr>
-					<td><%= link_to 'Example Base Mail', 'emails/base-mail/base.html' %></td>
-				</tr>
-				<tr>
-					<td>Content 2</td>
-				</tr>
-			</tbody>
-		</table>
-</div>
+<h3>Email list</h3>
+<ol>
+  <li><%= link_to 'Example Base Mail', 'emails/base-mail/base.html' %></li>
+</ol>
