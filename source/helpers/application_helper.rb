@@ -21,7 +21,8 @@ module ApplicationHelper
   # TABLE
   def table(opts = {})
     width = opts[:width].blank? ? 'auto' : opts[:width]
-    "cellpadding='0' cellspacing='0' border='0' width='#{width}' style='width:#{width}'"
+    align = opts[:align].blank? ? 'center' : opts[:align]
+    "cellpadding='0' cellspacing='0' border='0' width='#{width}' align='#{align}' #{opts[:attr]} style='width:#{width};align:#{align};#{opts[:style]}'"
   end
 
   # FONT

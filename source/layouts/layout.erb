@@ -1,3 +1,6 @@
+<%
+   align = current_page.data.align.blank? ? 'center' : current_page.data.align
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,7 +9,11 @@
 <body>
   <table <%= table width: '100%' %>>
     <tr>
-    <td><%= yield %></td>
+    <td valign="top" align="<%= align %>">
+      <center style="text-align:<%= align %>;">
+        <%= yield %>
+      </center>
+    </td>
     </tr>
   </table>
 </body>
