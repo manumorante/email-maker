@@ -1,7 +1,7 @@
 Email maker
 ================================
 
-Ruby Helpers for create compatible e-mail templates.
+Ruby Helpers for create compatible e-mail templates. MailChimp.
 
   - Compatible
   - GH Pages auto hosting

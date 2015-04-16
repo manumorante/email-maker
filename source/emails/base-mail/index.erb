@@ -2,22 +2,26 @@
 title: Base Mail
 host: http://manumorante.github.io/email-maker
 folder: base-mail
+font_family: Times
 width: 640px
 align: center
 ---
-<table <%= table width: '640px', align: 'center' %>>
+<table <%= table :width => '640px', :align => 'center' %>>
   <tr>
     <td>
+
       <h3><%= lorem.date %></h3>
-      <%= image src: 'city.jpg', width: '400px', height: '300px' %>
+
+      <%= image :src => 'city.jpg', :width => '400px', :height => '300px' %>
+
       <span <%= font %>>
-        <p <%= font size: '20px' %>>Hello <%= lorem.first_name %>,</p>
+        <p <%= font :size => '20px' %>>Hello <%= lorem.first_name %>,</p>
         <p><%= lorem.paragraphs 1 %></p>
-        <p <%= font family: 'Courier' %>><%= lorem.sentence %></p>
+        <p <%= font :family => 'Courier' %>><%= lorem.sentence %></p>
         <p><%= lorem.words 5 %></p>
-        <p>Email: <%= lorem.email %></p>
-        <p>Thanks.<br>  <%= lorem.name %></p>
+        <p><%= lorem.name %> (<%= lorem.email %>)</p>
       </span>
+
     </td>
   </tr>
 </table>

@@ -2,7 +2,7 @@
 
 module ApplicationHelper
 
-  # IMAGE
+  # Image
   def image(opts = {})
     if opts[:width].blank? || opts[:height].blank?
       error 'You need specify the "width" and "height" to the images.'
@@ -18,22 +18,23 @@ module ApplicationHelper
     end
   end
 
-  # TABLE
+  # Table
   def table(opts = {})
     width = opts[:width].blank? ? 'auto' : opts[:width]
     align = opts[:align].blank? ? 'center' : opts[:align]
     "cellpadding='0' cellspacing='0' border='0' width='#{width}' align='#{align}' #{opts[:attr]} style='width:#{width};align:#{align};#{opts[:style]}'"
   end
 
-  # FONT
+  # Font
   def font(opts = {})
+    color  = opts[:color].blank? ? current_page.data.color1 : eval("current_page.data.color#{opts[:color]}")
     family = opts[:family].blank? ? current_page.data.font_family : opts[:family]
-    size = opts[:size].blank? ? current_page.data.font_size : opts[:size]
+    size   = opts[:size].blank? ? current_page.data.font_size : opts[:size]
 
-    "style='font-family:#{family};font-size:#{size}'"
+    "style='font-family:#{family};font-size:#{size};color:#{color}'"
   end
 
-  # SPACER
+  # Spacer
   def spacer(opts = {})
     size = opts[:size].blank? ? '20' : opts[:size]
     image :src => "spacer-#{size}.png"
