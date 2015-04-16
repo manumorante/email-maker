@@ -27,6 +27,33 @@ Use
 
 The *default layout* is a set of rules valid CSS and HTML to create the basis for our email .
 
+### Helpers
+
+**IMAGE**
+```ruby
+image(opts = {})
+```
+
+**TABLE**
+```ruby
+table(opts = {})
+```
+
+**FONT**
+```ruby
+font(opts = {})
+```
+
+**SPACER**
+```ruby
+spacer(opts = {})
+```
+
+**Error**
+```ruby
+error msg
+```
+
 ### Create a new mail
 
 Create a new folder in `/source/emails/` and put here your images and the a file `your_mail.html.erb`.
